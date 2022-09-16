@@ -2,6 +2,7 @@ package com.codepath.bestsellerlistapp
 
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewDebug
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -30,6 +31,9 @@ class BestSellerBooksRecyclerViewAdapter(
         holder.mItem = books[position]
         holder.mBookTitle.text = books[position].title
         holder.mBookAuthor.text = books[position].author
+        holder.mBookRanking.text = books[position].rank.toString()
+        holder.mBookDescription.text = books[position].description
+        //holder.mBookDescription.text = books[position].description
         holder.mView.setOnClickListener {
             holder.mItem?.let { book ->
                 mListener?.onItemClick(book)
@@ -44,6 +48,9 @@ class BestSellerBooksRecyclerViewAdapter(
     inner class BookViewHolder(val mView: View) : ViewHolder(mView) {
         val mBookTitle: TextView = mView.findViewById<View>(id.book_title) as TextView
         val mBookAuthor: TextView = mView.findViewById<View>(id.book_author) as TextView
+        val mBookRanking: TextView = mView.findViewById<View>(id.ranking) as TextView
+        val mBookDescription: TextView = mView.findViewById<View>(id.book_description) as TextView
+        //button here?
         var mItem: BestSellerBook? = null
 
         override fun toString(): String {
